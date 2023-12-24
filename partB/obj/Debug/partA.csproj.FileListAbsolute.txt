@@ -1,0 +1,7 @@
+E:\УНИВЕРСИТЕТ\2 курс\ООП\Project_partA_Гірка_program\PartA\bin\Debug\partA.exe.config
+E:\УНИВЕРСИТЕТ\2 курс\ООП\Project_partA_Гірка_program\PartA\bin\Debug\partA.exe
+E:\УНИВЕРСИТЕТ\2 курс\ООП\Project_partA_Гірка_program\PartA\bin\Debug\partA.pdb
+E:\УНИВЕРСИТЕТ\2 курс\ООП\Project_partA_Гірка_program\PartA\obj\Debug\partA.csproj.AssemblyReference.cache
+E:\УНИВЕРСИТЕТ\2 курс\ООП\Project_partA_Гірка_program\PartA\obj\Debug\partA.csproj.CoreCompileInputs.cache
+E:\УНИВЕРСИТЕТ\2 курс\ООП\Project_partA_Гірка_program\PartA\obj\Debug\partA.exe
+E:\УНИВЕРСИТЕТ\2 курс\ООП\Project_partA_Гірка_program\PartA\obj\Debug\partA.pdb

@@ -61,6 +61,7 @@ namespace partB
             }
         }
 
+
         public Procedure Procedure
         {
             get { return procedure; }
@@ -77,12 +78,10 @@ namespace partB
             }
         }
 
-        public Booking(Client client, Procedure procedure, DateTime bookingTime, BeautySpecialist beautySpecialist)
+        public Booking(Procedure procedure, BeautySpecialist beautySpecialist)
         {
-            this.client = client;
             this.procedure = procedure; 
-            this.bookingTime = bookingTime;
-            this.procedure = procedure;
+            this.beautySpecialist = beautySpecialist;
         }
 
         public void PrintToDisplay()

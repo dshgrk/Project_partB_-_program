@@ -11,6 +11,13 @@ namespace partB
         private int price;
         private ProcedureTypes name;
         private TimeSpan duration;
+        private BeautySpecialist specialist;
+
+        public BeautySpecialist Specialist
+        {
+            get { return specialist; }
+            set { specialist = value; }
+        }
 
         public int Price
         {
@@ -60,7 +67,8 @@ namespace partB
             Console.WriteLine($"Назва процедури: {Name}");
             Console.WriteLine($"Ціна: {Price}");
             Console.WriteLine($"Тривалість: {Duration}");
+            Console.WriteLine($"Хто буде робити процедуру: {Specialist.FirstName}");
         }
 
-    }
+    } 
 }

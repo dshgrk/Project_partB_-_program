@@ -12,7 +12,7 @@ namespace partB
         private string firstName;
         private string lastName;
         private int age;
-        private readonly List<Booking> listOfClientProcedures;
+        private List<Booking> listOfBooking;
 
         public string FirstName
         {
@@ -66,16 +66,20 @@ namespace partB
             }
         }
 
-        public List<Booking> ListOfClientProcedures
+        public List<Booking> ListOfBooking
         {
-            get { return listOfClientProcedures; }
+            get { return listOfBooking; }
+            set
+            {
+                listOfBooking = value;
+            }
         }
 
         public Client(string name, int age)
         {
             firstName = name;
             this.age = age;
-            listOfClientProcedures = new List<Booking>();
+            listOfBooking = new List<Booking>();
         }
 
         public void DisplayInfo()
@@ -83,30 +87,31 @@ namespace partB
             Console.WriteLine($"Ім'я клієнта: {FirstName}");
             Console.WriteLine($"Вік клієнта: {Age}");
             Console.WriteLine("Список запланованих процедур:");
-            if (ListOfClientProcedures != null)
+            if (ListOfBooking.Count > 0)
             {
-                foreach (var booking in ListOfClientProcedures)
+                foreach (var booking in ListOfBooking)
                 {
-                    Console.WriteLine(booking);
+                    Console.WriteLine($"Назва: {booking.Procedure.Name}");
+                    Console.WriteLine($"Дата та час: {booking.BookingTime}");
                 }
             }
             else Console.WriteLine("У клієнта немає запланованих процедур");
 
         }
 
-        public void AddProcedure(Booking procedure)
+        public void AddProcedure(Booking booking)
         {
-            ListOfClientProcedures.Add(procedure);
+            ListOfBooking.Add(booking);
         }
 
-        public void RemoveProcedure(Booking procedure)
+        public void RemoveProcedure()
         {
-            ListOfClientProcedures.Remove(procedure);
+            ListOfBooking.Remove(ListOfBooking[ListOfBooking.Count-1]);
         }
 
         public void ClearProcedures()
         {
-            ListOfClientProcedures.Clear();
+            ListOfBooking.Clear();
         }
 
         public bool IsValidName(string input)

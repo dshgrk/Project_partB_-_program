@@ -16,8 +16,8 @@ namespace partB
         private string lastName;
         private int age;
         private int salary;
-        private List<Booking> listOfProcedures;
-        private Procedure.Name specialization;
+        private List<Booking> listOfSpecialistProcedures;
+        private Procedure specialization;
 
         public string FirstName
         {
@@ -55,12 +55,12 @@ namespace partB
             }
         }
 
-        public List<Booking> ListOfProcedures
+        public List<Booking> ListOfSpecialistProcedures
         {
-            get { return listOfProcedures; }
+            get { return listOfSpecialistProcedures; }
             set
             {
-                listOfProcedures = value;
+                listOfSpecialistProcedures = value;
             }
         }
 
@@ -88,6 +88,7 @@ namespace partB
             this.age = age;
             this.specialization = specialization;
             this.salary = salary;
+            ListOfSpecialistProcedures = new List<Booking>();
         }
 
         public bool IsValidName(string input)
@@ -95,54 +96,62 @@ namespace partB
             return Regex.IsMatch(input, "^[А-ЩЬЮЯЇІЄҐа-щьюяїієґ]+$");
         }
 
-        public decimal CalculateMonthSalary(DateTime month, ref int salary)
+        public List<Booking> GetBookingsForMonth(DateTime month)
+        {
+            return ListOfSpecialistProcedures
+                .Where(booking => booking.BookingTime.Month == month.Month && booking.BookingTime.Year == month.Year)
+                .ToList();
+        }
+
+
+        public decimal CalculateMonthSalary(DateTime month)
         {
             decimal bonuses = 0;
 
-            if (ListOfProcedures != null)
+            if (ListOfSpecialistProcedures != null)
             {
-                foreach (var booking in ListOfProcedures)
+                foreach (var booking in ListOfSpecialistProcedures)
                 {
-                    bonuses += booking.Procedure.Price * 0.1m;
+                    if (booking.BookingTime.Month == month.Month && booking.BookingTime.Year == month.Year)
+                    {
+                        bonuses += booking.Procedure.Price * 0.1m;
+                    }
                 }
             }
 
-            salary += (int)bonuses;
+            int newSalary = Salary + (int)bonuses;
 
-            return bonuses;
+            return newSalary;
         }
 
 
         public void AddProcedure(Booking booking)
-        {
-            ListOfProcedures.Add(booking);
+        { 
+            ListOfSpecialistProcedures.Add(booking);
         }
 
         public void RemoveProcedure(Booking booking)
         {
-            ListOfProcedures.Remove(booking);
+            ListOfSpecialistProcedures.Remove(booking);
         }
 
-        public void ClearProcedures()
-        {
-            ListOfProcedures.Clear();
-        }
-
+       
         public void DisplayInfo()
         {
             Console.WriteLine($"Ім'я майстра: {FirstName}");
             Console.WriteLine($"Вік майстра: {Age}");
             Console.WriteLine($"Заробітна плата майстра: {Salary}");
-            Console.WriteLine($"Спеціалізація: {Specialization}");
-            Console.WriteLine("Список запланованих процедур:");
-            if (ListOfProcedures != null)
+            Console.WriteLine($"Спеціалізація: {Specialization.Name}");
+            if (ListOfSpecialistProcedures != null)
             {
-                foreach (var booking in ListOfProcedures)
+                Console.WriteLine("Дати запланованих процедур:");
+                int i = 0;
+                foreach (var booking in ListOfSpecialistProcedures)
                 {
-                    Console.WriteLine(booking);
+                    Console.WriteLine($"{i+1}) {booking.BookingTime}");
                 }
             }
-            else Console.WriteLine("У клієнта немає запланованих процедур");
+            else Console.WriteLine("У майстра немає запланованих процедур");
         }
     }
 }

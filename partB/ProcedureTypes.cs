@@ -8,7 +8,7 @@ namespace partB
 {
     public enum ProcedureTypes
     {
-        HaitCut,
+        HairCut,
         HairColoring,
         Manicure,
         Pedicure,
@@ -16,8 +16,7 @@ namespace partB
         LipsInjection,
         Lashes,
         BrowTattoo,
-        BrowDye,
-        BrowsLamin
+        BrowDye
     }
 
 }
